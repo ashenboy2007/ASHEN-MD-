@@ -92,7 +92,7 @@ cmd({
         'image': {
           'url': config.LOGO
         },
-        'caption': "*Hello " + _0x4bc6d9 + " ❕*\n\n*🫟 I am KAVIDU-MD WhatsApp Bot. I am alive now 👀*\n\n   *• Smart 🛸*\n   *• Fast 🚀*\n   *• Secure 📍*\n\n*Thank you for using KAVIDU-MD 📍 !*",
+        'caption': "*Hello " + _0x4bc6d9 + " ❕*\n\n*🫟 I am ASHEN-MD WhatsApp Bot. I am alive now 👀*\n\n   *• Smart 📲*\n   *• Fast 💀*\n   *• Secure 👉 *\n\n*Thank you for using ASHEN-MD 👈 !*",
         'footer': config.FOOTER,
         'buttons': _0x1af2e5,
         'headerType': 0x4
@@ -162,7 +162,7 @@ cmd({
     });
     const _0x1f4aa0 = Date.now() - _0x940db6;
     await _0x52a8fa.sendMessage(_0x4bf948, {
-      'text': "*Pong " + _0x1f4aa0 + " ms 🚀*",
+      'text': "*Pong " + _0x1f4aa0 + " ms 🛸*",
       'edit': _0x471b6f.key
     });
     await _0x52a8fa.sendMessage(_0x4bf948, {
@@ -211,8 +211,8 @@ cmd({
     const _0x396413 = Math.round(os.totalmem() / 0x400 / 0x400);
     const _0x518e7e = _0xc1a722 + "MB / " + _0x396413 + 'MB';
     const _0x511bef = await runtime(process.uptime());
-    const _0x10d177 = "*Hello " + _0xe4daa9 + "👋*\n\n*╭─❍  KAVIDU-MD - Menu 🫟 ❍─╮*\n\n*`🪺 Prefix:` " + config.PREFIX + "*\n*`🎲 Uptime:`  " + _0x511bef + "*\n*`🚀 Memory Use:` " + _0x518e7e + "*\n*`⛵ Platform:` " + _0x131f3b + "*\n*`👨🏻‍💻 Owner:` 94767054052*\n\n*╰──────────────────╯*\n\n⚡ *Your all-in-one WhatsApp assistant — fast, reliable, and easy to use!*\n\n*• Github :* _https://github.com/kavidumdbot/KAVIDUMD-V1_\n\n*• Follow us :* _https://whatsapp.com/channel/0029VbAM4eo3AzNQZ1WleW3e_";
-    const _0x4d4bd5 = "*Hello " + _0xe4daa9 + "👋*\n\n*╭──❍  KAVIDU-MD - Menu 🫟 ❍──╮*\n\n*`🪺 Prefix:` " + config.PREFIX + "*\n*`🎲 Uptime:`  " + _0x511bef + "*\n*`🚀 Memory Use:` " + _0x518e7e + "*\n*`⛵ Platform:` " + _0x131f3b + "*\n*`👨🏻‍💻 Owner:` 94767054052*\n\n*╰──────────────────╯*\n\n⚡ *Your all-in-one WhatsApp assistant — fast, reliable, and easy to use!*\n\n*• Github :* _https://github.com/kavidumdbot/KAVIDUMD-V1_\n\n*• Follow us :* _https://whatsapp.com/channel/0029VbAM4eo3AzNQZ1WleW3e_";
+    const _0x10d177 = "*Hello " + _0xe4daa9 + "👋*\n\n*╭─❍  ASHEN-MD - Menu 🫟 ❍─╮*\n\n*`🪺 Prefix:` " + config.PREFIX + "*\n*`📲 Uptime:`  " + _0x511bef + "*\n*`🛸 Memory Use:` " + _0x518e7e + "*\n*`⛵ Platform:` " + _0x131f3b + "*\n*`👨🏻‍💻 Owner:` 94767054052*\n\n*╰──────────────────╯*\n\n⚡ *Your all-in-one WhatsApp assistant — fast, reliable, and easy to use!*\n\n*• Github :* _https://github.com/_\n\n*• Follow us :* _https://whatsapp.com/channel/0029VbAM4eo3AzNQZ1WleW3e_";
+    const _0x4d4bd5 = "*Hello " + _0xe4daa9 + "👋*\n\n*╭──❍  ASHEN-MD  - Menu 🫟 ❍──╮*\n\n*`🪺 Prefix:` " + config.PREFIX + "*\n*`📲 Uptime:`  " + _0x511bef + "*\n*`🛸 Memory Use:` " + _0x518e7e + "*\n*`⛵ Platform:` " + _0x131f3b + "*\n*`👨🏻‍💻 Owner:` 94767054052*\n\n*╰──────────────────╯*\n\n⚡ *Your all-in-one WhatsApp assistant — fast, reliable, and easy to use!*\n\n*• Github :* _https://github.com/_\n\n*• Follow us :* _https://whatsapp.com/channel/0029VbAM4eo3AzNQZ1WleW3e_";
     let _0x2500e1;
     try {
       if (!config.LOGO || !config.LOGO.startsWith('http')) {
@@ -232,37 +232,37 @@ cmd({
     const _0x583d90 = [{
       'buttonId': _0x279e3e + "mainmenu",
       'buttonText': {
-        'displayText': " 💢𝕄𝔸𝕀ℕ 𝕄𝔼ℕ𝕌  "
+        'displayText': " 📂𝙈𝘼𝙄𝙉 𝙈𝙀𝙉𝙐  "
       },
       'type': 0x1
     }, {
       'buttonId': _0x279e3e + "groupmenu",
       'buttonText': {
-        'displayText': " 💢𝔾ℝ𝕆𝕌ℙ 𝕄𝔼ℕ𝕌 "
+        'displayText': " 👥𝙂𝙍𝙊𝙐𝙋 𝙈𝙀𝙉𝙐 "
       },
       'type': 0x1
     }, {
       'buttonId': _0x279e3e + "moviemenu",
       'buttonText': {
-        'displayText': " 💢𝕄𝕆𝕍𝕀𝔼 𝕄𝔼ℕ𝕌 "
+        'displayText': " 🎥𝙈𝙊𝙑𝙄𝙀 𝙈𝙀𝙉𝙐 "
       },
       'type': 0x1
     }, {
       'buttonId': _0x279e3e + "downloadmenu",
       'buttonText': {
-        'displayText': " 💢𝔻𝕆𝕎ℕ𝕃𝕆𝔸𝔻 𝕄𝔼ℕ𝕌 "
+        'displayText': " 📥𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿 𝙈𝙀𝙉𝙐 "
       },
       'type': 0x1
     }, {
       'buttonId': _0x279e3e + "convertmenu",
       'buttonText': {
-        'displayText': " 💢ℂ𝕆ℕ𝕍𝔼ℝ𝕋 𝕄𝔼ℕ𝕌 "
+        'displayText': " 🧬𝘾𝙊𝙉𝙑𝙀𝙍𝙏 𝙈𝙀𝙉𝙐 "
       },
       'type': 0x1
     }, {
       'buttonId': _0x279e3e + 'aicommands',
       'buttonText': {
-        'displayText': " 💢𝔸𝕀 𝕄𝔼ℕ𝕌 "
+        'displayText': " 🎯𝘼𝙄 𝙈𝙀𝙉𝙐 "
       },
       'type': 0x1
     }];
@@ -277,7 +277,7 @@ cmd({
       const _0xbc5dba = {
         'title': "𝙲𝚕𝚒𝚌𝚔 𝙷𝚎𝚛𝚎 📥 :)",
         'sections': [{
-          'title': 'KAVIDU-MD',
+          'title': 'ASHEN-MD',
           'rows': [{
             'title': "MAIN COMMANDS",
             'description': "Main command menu",
@@ -682,9 +682,9 @@ cmd({
       'contacts': {
         'displayName': "Bot Owners",
         'contacts': [{
-          'vcard': "BEGIN:VCARD\nVERSION:3.0\nFN: Themi Sadas\nORG: Web Developer;\nTEL;type=CELL;type=VOICE;waid=94767054052:+94763934860\nEND:VCARD"
+          'vcard': "BEGIN:VCARD\nVERSION:3.0\nFN: kavidu induwara\nORG: Web Developer;\nTEL;type=CELL;type=VOICE;waid=94767054052:+94763934860\nEND:VCARD"
         }, {
-          'vcard': "BEGIN:VCARD\nVERSION:3.0\nFN: Savithu Iduwara\nORG: Web Developer;\nTEL;type=CELL;type=VOICE;waid=94767054052:+94763934860\nEND:VCARD"
+          'vcard': "BEGIN:VCARD\nVERSION:3.0\nFN: kavidu induwara\nORG: Web Developer;\nTEL;type=CELL;type=VOICE;waid=94767054052:+94763934860\nEND:VCARD"
         }]
       }
     }, {
@@ -867,7 +867,7 @@ cmd({
     const _0x4d5e75 = Math.round(_0x57f6c0.totalmem() / 0x400 / 0x400);
     const _0x27f051 = _0x4b4933 + " MB / " + _0x4d5e75 + " MB";
     const _0x1b3e30 = await runtime(process.uptime());
-    const _0x5d26dd = "\n*🫟 KAVIDU-MD SYSTEM STATUS 🫟*\n\n`⏳ Uptime:`       *" + _0x1b3e30 + "*\n`💾 RAM Usage:`    *" + _0x27f051 + "*\n`🖥️ Platform:`     *" + _0x33d598 + "*\n`⚙️ Version:`      *3.0.1*\n\n";
+    const _0x5d26dd = "\n*🫟 ASHEN-MD SYSTEM STATUS 🫟*\n\n`⏳ Uptime:`       *" + _0x1b3e30 + "*\n`💾 RAM Usage:`    *" + _0x27f051 + "*\n`🖥️ Platform:`     *" + _0x33d598 + "*\n`⚙️ Version:`      *3.0.1*\n\n";
     await _0x580a29.sendMessage(_0x43c8b6.chat, {
       'text': _0x5d26dd.trim()
     }, {
