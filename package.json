@@ -1,9 +1,9 @@
 {
-  "name": "KAVIDU-MD",
+  "name": "ASHEN-MD",
   "version": "2.0.0",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name KAVIDU-MD",
-    "stop": "pm2 stop KAVIDU-MD",
+    "start": "pm2 start index.js --deep-monitoring --attach --name ASHEN-MD",
+    "stop": "pm2 stop ASHEN-MD",
     "restart": "git pull && npm stop && npm start",
     "stash": "git stash && git stash drop"
   },
