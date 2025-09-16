@@ -147,7 +147,7 @@ cmd({
       return await _0x48f9de("*Please give me googledrive url !!*");
     }
     let _0x252606 = await GDriveDl(_0x4f50da);
-    let _0xd40659 = "*`🗃️ KAVIDU-MD GDRIVE DOWNLODER 🗃️`*\n\n*┌──────────────────*\n*├ 🗃️ Name :* " + _0x252606.fileName + "\n*├ ⏩ Type :* " + _0x252606.fileSize + "\n*├ 📁 Size :* " + _0x252606.mimetype + "\n*└──────────────────*";
+    let _0xd40659 = "*`📂 ASHEN-MD GDRIVE DOWNLODER 📂`*\n\n*┌──────────────────*\n*├ 🗃️ Name :* " + _0x252606.fileName + "\n*├ ⏩ Type :* " + _0x252606.fileSize + "\n*├ 📁 Size :* " + _0x252606.mimetype + "\n*└──────────────────*";
     await _0x48f9de(_0xd40659);
     _0xe91fdc.sendMessage(_0x1c3fcd, {
       'document': {
@@ -319,7 +319,7 @@ cmd({
     const _0x2b2783 = await yts(_0x408e94);
     const _0x50b0e3 = _0x2b2783.videos[0x0];
     const _0x1f2f20 = config.FOOTER;
-    let _0xc24ba = "*🎶 KAVIDU-MD SONG DOWNLODER 🎶*\n\n*┌─────────────────────┐*\n*├ 🎶 Title : " + _0x50b0e3.title + "* \n*├ 🐼 Views : " + _0x50b0e3.views + "*\n*├ ⌛ Duration : " + _0x50b0e3.duration + "*\n*├ 📎 URL : " + _0x50b0e3.url + "*\n*└─────────────────────┘*";
+    let _0xc24ba = "*🧬 ASHEN-MD SONG DOWNLODER 🧬*\n\n*┌─────────────────────┐*\n*├ 🎶 Title : " + _0x50b0e3.title + "* \n*├ 🐼 Views : " + _0x50b0e3.views + "*\n*├ ⌛ Duration : " + _0x50b0e3.duration + "*\n*├ 📎 URL : " + _0x50b0e3.url + "*\n*└─────────────────────┘*";
     const _0x216331 = [{
       'buttonId': _0x2723d0 + "ytaa " + _0x50b0e3.url,
       'buttonText': {
@@ -433,7 +433,7 @@ cmd({
     const _0x5a058d = await yts(_0x5db991);
     const _0x4c416d = _0x5a058d.videos[0x0];
     const _0xcebc53 = config.FOOTER;
-    let _0x56ea4f = "🎶 *KAVIDU-MD SONG DOWNLOADER* 🎶\n\n┌────────────────────┐\n│ 🎵 *Title:* " + _0x4c416d.title + "\n│ 👁️ *Views:* " + _0x4c416d.views + "\n│ ⏱️ *Duration:* " + _0x4c416d.duration + "\n│ 🔗 *URL:* " + _0x4c416d.url + "\n└────────────────────┘";
+    let _0x56ea4f = "🧬 *ASHEN-MD SONG DOWNLOADER* 🧬\n\n┌────────────────────┐\n│ 🎵 *Title:* " + _0x4c416d.title + "\n│ 👁️ *Views:* " + _0x4c416d.views + "\n│ ⏱️ *Duration:* " + _0x4c416d.duration + "\n│ 🔗 *URL:* " + _0x4c416d.url + "\n└────────────────────┘";
     await _0x13555f.sendMessage(_0x20ce62, {
       'image': {
         'url': _0x4c416d.thumbnail
@@ -1149,17 +1149,17 @@ cmd({
       return await _0x366254("valid_url");
     }
     const _0x3bb64f = await fetchJson("https://darksadasyt-tiktokdl.vercel.app/api/tiktok?q=" + _0x245190);
-    let _0x540355 = "*`🪺 KAVIDU-MD TIK TOK DOWNLODER 🪺`*\n\n*┌──────────────────*\n*├ 🎩 Title :* " + _0x3bb64f.title + "\n*├ 🎃 Region :* " + _0x3bb64f.regions + "\n*├ ⏰ Duration :* " + _0x3bb64f.runtime + "\n*├ 🔗 Url:* " + _0x245190 + "\n*└──────────────────*\n";
+    let _0x540355 = "*`🎭 ASHEN-MD TIK TOK DOWNLODER 🎭`*\n\n*┌──────────────────*\n*├ 🎩 Title :* " + _0x3bb64f.title + "\n*├ 🎃 Region :* " + _0x3bb64f.regions + "\n*├ ⏰ Duration :* " + _0x3bb64f.runtime + "\n*├ 🔗 Url:* " + _0x245190 + "\n*└──────────────────*\n";
     const _0x17cdc8 = [{
       'buttonId': _0x599c19 + "ttdl1 " + _0x3bb64f.no_watermark,
       'buttonText': {
-        'displayText': "_Video No Watermark 📼_"
+        'displayText': "_Video No Watermark 🎯_"
       },
       'type': 0x1
     }, {
       'buttonId': _0x599c19 + "ttdl2 " + _0x3bb64f.watermark,
       'buttonText': {
-        'displayText': "_Video Watermark 📼_"
+        'displayText': "_Video Watermark 🎯_"
       },
       'type': 0x1
     }, {
@@ -1179,7 +1179,7 @@ cmd({
       'headerType': 0x4
     };
     const _0x43d3c9 = {
-      'title': "❯❯ Choose a video Format ❮❮",
+      'title': "❯❯ Choose a video Format 💀 ❮❮",
       'sections': [{
         'title': "Tiktok Video Type 📽️",
         'rows': [{
@@ -1481,7 +1481,7 @@ cmd({
   'pattern': 'fb',
   'alias': ["facebook"],
   'use': ".fb <facebook url>",
-  'react': '🏮',
+  'react': '🎭',
   'desc': "Download videos from Facebook",
   'category': "download",
   'filename': __filename
@@ -1517,7 +1517,7 @@ cmd({
       _0xaf4c37 = 'https://images.weserv.nl/?url=' + encodeURIComponent(_0xaf4c37.replace(/^https?:\/\//, ''));
     }
     const _0x15d799 = _0x405200.result.duration || "Unknown";
-    const _0x572edb = "*🎯 KAVIDU-MD FB DOWNLOADER 🎯*\n\n*┌──────────────────*\n*├ 🐼 Title:* Facebook video\n" + ("*├ ⏱️ Duration:* " + _0x15d799 + "\n") + ("*├ 🔗 Url:* " + _0x13cd1c + "\n") + "*└──────────────────*";
+    const _0x572edb = "*📥 ASHEN-MD FB DOWNLOADER 📥*\n\n*┌──────────────────*\n*├ 🐼 Title:* Facebook video\n" + ("*├ ⏱️ Duration:* " + _0x15d799 + "\n") + ("*├ 🔗 Url:* " + _0x13cd1c + "\n") + "*└──────────────────*";
     const _0x2ab787 = [];
     if (_0x5e13b5[0x0]?.["url"]) {
       _0x2ab787.push({
@@ -1550,7 +1550,7 @@ cmd({
       'headerType': 0x4
     };
     const _0x20e7db = {
-      'title': "❯❯ Choose a video Format ❮❮",
+      'title': "❯❯ Choose a video Format 💀 ❮❮",
       'sections': [{
         'title': "Facebook Video Type 📽️",
         'rows': [{
@@ -1950,7 +1950,7 @@ cmd({
       });
     }
     const _0x43eb30 = await apkdl.download(_0x4ad3c6);
-    let _0x231153 = "*`🗃️ KAVIDU-MD APK DOWNLODER 🗃️`*\n\n*┌──────────────────╮*\n*├ 📚 Name :* " + _0x43eb30.name + "\n*├ 📦 Developer :* " + _0x43eb30["package"] + "\n*├ ⬆️ Last update :* " + _0x43eb30.lastup + "\n*├ 📥 Size :* " + _0x43eb30.size + "\n*└──────────────────╯*";
+    let _0x231153 = "*`🗃️ ASHEN-MD APK DOWNLODER 🗃️`*\n\n*┌──────────────────╮*\n*├ 📚 Name :* " + _0x43eb30.name + "\n*├ 📦 Developer :* " + _0x43eb30["package"] + "\n*├ ⬆️ Last update :* " + _0x43eb30.lastup + "\n*├ 📥 Size :* " + _0x43eb30.size + "\n*└──────────────────╯*";
     await _0x271dfe.sendMessage(_0x5b01f9, {
       'image': {
         'url': _0x43eb30.icon
@@ -2027,7 +2027,7 @@ cmd({
     const _0x3f8f46 = _0x2aac79.replace(/\?si=[^&]*/, '');
     var _0x26a664 = await yts(_0x3f8f46);
     var _0x40d212 = _0x26a664.videos[0x0];
-    let _0x1cf846 = "*📹 KAVIDU-MD VIDEO DOWNLODER 📹*\n\n*┌─────────────────────┐*\n*├ 📹 Title : " + _0x40d212.title + "* \n*├ 🐼 Views : " + _0x40d212.views + "*\n*├ ⌛Duration : " + _0x40d212.duration + "*\n*├ 📎 URL : " + _0x40d212.url + "*\n*└─────────────────────┘*";
+    let _0x1cf846 = "*📹 ASHEN-MD VIDEO DOWNLODER 📹*\n\n*┌─────────────────────┐*\n*├ 📹 Title : " + _0x40d212.title + "* \n*├ 🐼 Views : " + _0x40d212.views + "*\n*├ ⌛Duration : " + _0x40d212.duration + "*\n*├ 📎 URL : " + _0x40d212.url + "*\n*└─────────────────────┘*";
     const _0x192320 = [{
       'title': "`Video type 📽️`",
       'rows': [{
@@ -2076,7 +2076,7 @@ cmd({
       'sections': _0x192320
     };
     const _0x2d80fe = {
-      'title': "❯❯ Choose a video quality ❮❮",
+      'title': "❯❯ Choose a video quality 💀 ❮❮",
       'sections': [{
         'title': "Video Type 📽️",
         'rows': [{
@@ -2649,7 +2649,7 @@ cmd({
       });
     }
     const _0x53caa6 = await fetchJson("https://mfire-dl.vercel.app/mfire?url=" + _0x4bd374);
-    let _0x312b64 = "*`🔥 KAVIDU-MD MEDIAFIRE DOWNLODER 🔥`*\n\n*┌──────────────────╮*\n*├ 🔥 Name :* " + _0x53caa6.fileName + "\n*├ ⏩ Type :* " + _0x53caa6.fileType + "\n*├ 📁 Size :* " + _0x53caa6.size + "\n*├ 📅 Date :* " + _0x53caa6.date + "\n*└──────────────────╯*";
+    let _0x312b64 = "*`🔥 ASHEN-MD MEDIAFIRE DOWNLODER 🔥`*\n\n*┌──────────────────╮*\n*├ 🔥 Name :* " + _0x53caa6.fileName + "\n*├ ⏩ Type :* " + _0x53caa6.fileType + "\n*├ 📁 Size :* " + _0x53caa6.size + "\n*├ 📅 Date :* " + _0x53caa6.date + "\n*└──────────────────╯*";
     _0x3e0d38(_0x312b64);
     let _0x5110b4 = await _0xa7984d.sendMessage(_0x5412f2, {
       'document': {
@@ -2991,7 +2991,7 @@ cmd({
 }) => {
   try {
     let _0x44f6f5 = await fetchJson("https://ph-slow-dl.vercel.app/api/analyze?q=" + _0x1325a8);
-    let _0x35e7bb = "*`🔞 KAVIDU-MD PORNHUB DOWNLOADER 🔞`*\n\n*┌──────────────────*\n*├ ❄️ Title :* " + _0x44f6f5.video_title + "\n*├ ⏱️ Time :* " + _0x44f6f5.analyze_time + "\n*├ 🧐 Uploder :* " + _0x44f6f5.video_uploader + "\n*├ 🔗 Url :* " + _0x1325a8 + "\n*└──────────────────*";
+    let _0x35e7bb = "*`🔞 ASHEN-MD PORNHUB DOWNLOADER 🔞`*\n\n*┌──────────────────*\n*├ ❄️ Title :* " + _0x44f6f5.video_title + "\n*├ ⏱️ Time :* " + _0x44f6f5.analyze_time + "\n*├ 🧐 Uploder :* " + _0x44f6f5.video_uploader + "\n*├ 🔗 Url :* " + _0x1325a8 + "\n*└──────────────────*";
     var _0x156a34 = [];
     _0x44f6f5.format.map(_0x5a9ce7 => {
       _0x156a34.push({
@@ -3156,7 +3156,7 @@ cmd({
     if (!_0x1aead4 || !_0x1aead4.downloadLink) {
       return await _0x5182cd("❌ Could not retrieve the song. Please check your query.");
     }
-    let _0x2ff618 = "*`🎼 VISPER SPOTIFY DOWNLOADER 🎼`*\n\n*┌──────────────────╮*\n*├ 🎶 Title:* " + _0x1aead4.title + "\n*├ 🧑‍🎤 Artist:* " + _0x1aead4.artist + "\n*├ 💽 Album:* " + _0x1aead4.album + "\n*├ 📅 Date:* " + _0x1aead4.releaseDate + "\n*├ 🔗 URL:* " + _0x57aff0 + "\n*└──────────────────╯*";
+    let _0x2ff618 = "*`🎼 ASHEN-MD SPOTIFY DOWNLOADER 🎼`*\n\n*┌──────────────────╮*\n*├ 🎶 Title:* " + _0x1aead4.title + "\n*├ 🧑‍🎤 Artist:* " + _0x1aead4.artist + "\n*├ 💽 Album:* " + _0x1aead4.album + "\n*├ 📅 Date:* " + _0x1aead4.releaseDate + "\n*├ 🔗 URL:* " + _0x57aff0 + "\n*└──────────────────╯*";
     const _0x23d401 = [{
       'buttonId': _0x204063 + "spa " + _0x1aead4.downloadLink,
       'buttonText': {
