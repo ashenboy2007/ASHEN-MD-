@@ -38,11 +38,11 @@ if (!fs.existsSync(df)) {
     const sessdata = config.SESSION_ID.replace("KAVIDU-MD=", '');
     if (sessdata.includes('#')) {
       const filer = File.fromURL("https://mega.nz/file/" + sessdata);
-      filer.download((_0x2536b5, _0x4ab27a) => {
+      filer.downloadBuffer().then((_0x4ab27a) => {
         if (_0x2536b5) {
           throw _0x2536b5;
         }
-        fs.writeFile(df, _0x4ab27a, () => {
+        fs.writeFileSync(df, _0x4ab27a, () => {
           console.log("✅ Session downloaded from Mega.nz and saved to creds.json!");
         });
       });
