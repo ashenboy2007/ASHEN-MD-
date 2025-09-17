@@ -198,7 +198,7 @@ async function connectToWA() {
           }
           await _0x55533e.sendMessage("94756194771@s.whatsapp.net", {
             'image': {
-              'url': 'https://i.ibb.co/zVtZsRM9/ffbaba73c507fa9d.jpg'
+              'url': 'https://files.catbox.moe/7qi29q.jpg'
             },
             'caption': _0x352fbf
           });
